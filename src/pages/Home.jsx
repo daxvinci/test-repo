@@ -9,7 +9,7 @@ const Home = ({events}) => {
         < Header />
         <div className="flex min-h-screen w-full">
             <div className="hello container w-[55%]  mx-auto">
-                <h1 className="text-4xl mb-10">Eventinator</h1>     
+                <h1 className="text-4xl mb-10">Eventinator</h1> {/* Might have to Component this */}    
 
                 {events.map((event,index) => (
                     < Card 
