@@ -2,6 +2,7 @@ import Bookmark from "./pages/Bookmark";
 import Home from "./pages/Home";
 import Event from "./pages/Event";
 import Form from "./pages/Form";
+import Error404 from "./pages/Error404";
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import './App.css'
 import { useState,useEffect } from "react";
@@ -27,16 +28,20 @@ function App() {
       element: < Home events ={events} setEvents = {setEvents}/>
     },
     {
-      path: "bookmark",
+      path: "/bookmark",
       element: < Bookmark events ={events} setEvents = {setEvents}/>
     },
     {
-      path: "event",
+      path: "/event/:id",
       element: < Event events ={events}/>
     },
     {
-      path: "form",
+      path: "/form",
       element: < Form />
+    },
+    {
+      path: "*",
+      element: < Error404 />
     },
   ]);
 

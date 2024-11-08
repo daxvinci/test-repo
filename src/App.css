@@ -13,11 +13,37 @@ body{
 }
 .card{
     border: 1px solid;
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.302);
     background-color: rgba(75, 85, 99, 0.1);
     transition: transform 0.5s ease-in-out;
+}
+.details-card{
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .card:hover{
     transform: translateY(-5px) scale(1.05);
     background-color: rgba(75, 85, 99, 0.5);
+}
+
+.active{
+    border-bottom: 2px solid rgb(170, 125, 12);
+}
+
+.nav-item:hover{
+    animation: hover 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes hover {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50%{
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
