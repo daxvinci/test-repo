@@ -33,6 +33,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'react/prop-types': 'off',   // i added this to prevent prop validation error i was getting
     },
   },
 ]

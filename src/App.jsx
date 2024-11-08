@@ -1,34 +1,45 @@
-// import Bookmark from "./pages/Bookmark";
-// import Home from "./pages/Home";
-// import Event from "./pages/Event";
-// import Form from "./pages/Form";
-// import {createBrowserRouter,RouterProvider,Link,} from "react-router-dom";
+import Bookmark from "./pages/Bookmark";
+import Home from "./pages/Home";
+import Event from "./pages/Event";
+import Form from "./pages/Form";
+import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import './App.css'
-import Home from './pages/Home'
+import { useState,useEffect } from "react";
 
 
 function App() {
+  const [events,setEvents] = useState([]);
 
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/",
-  //     element: (
-  //       <div>
-  //         <h1>Hello World</h1>
-  //         <Link to="about">About Us</Link>
-  //       </div>
-  //     ),
-  //   },
-  //   {
-  //     path: "about",
-  //     element: <div>About</div>,
-  //   },
-  // ]);
+  useEffect(()=>{
+    fetch("/events.json")
+    .then((res)=> res.json())
+    .then((data)=>setEvents(data))
+    .catch((err)=>console.log(err))
+  },[])
+  console.log(events)
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: < Home events ={events}/>
+    },
+    {
+      path: "bookmark",
+      element: < Bookmark events ={events}/>
+    },
+    {
+      path: "event",
+      element: < Event events ={events}/>
+    },
+    {
+      path: "form",
+      element: < Form />
+    },
+  ]);
 
   return (
     <>
-    {/* < RouterProvider router={router} /> */}
-     < Home />
+    < RouterProvider router={router} />
     </>
   )
 }
