@@ -1,10 +1,22 @@
+import { FaBookmark } from "react-icons/fa";
 
-const Card = ({title,date,location,category,description,image,id}) => {
+const Card = ({title,date,location,category,description,image,id,bookmarked,setEvents}) => {
+
+    const handleBookmark = (id)=>{
+        console.log(id)
+        setEvents((prev)=>
+            prev.map((newEvent)=> newEvent.eventId == id ? {...newEvent,bookmarked : !newEvent.bookmarked} : newEvent)
+        )
+        console.log(bookmarked)
+    }
+
     return ( 
-        <div id={id} className="card-container w-full flex mb-5 p-2 gap-3 justify-between">
-                    <div className="day w-[15%] p-1 font-semibold">
+        <div id={id.toString()} className="card-container w-full flex mb-5 p-2 gap-3 justify-between">
+                    <div className="day w-[15%] flex flex-col items-center gap-4 p-1 font-semibold">
                         <div className="date">{date}</div>
-                        <div className="bookmark">bookmark icon</div>
+                        <div onClick={()=>handleBookmark(id)} className="bookmark cursor-pointer">
+                            < FaBookmark size={20} color={bookmarked ? "#ffe300" : ""} />
+                        </div>
                     </div>
                     <div className="card flex cursor-pointer gap-3 w-[80%] p-4 justify-between shadow-lg rounded-3xl backdrop:blur-xl">
                         <div className="event-details flex flex-col gap-2">

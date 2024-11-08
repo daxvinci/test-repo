@@ -13,19 +13,22 @@ function App() {
   useEffect(()=>{
     fetch("/events.json")
     .then((res)=> res.json())
-    .then((data)=>setEvents(data))
+    .then((data)=>{
+      setEvents(data)
+      console.log(data)
+    })
     .catch((err)=>console.log(err))
   },[])
-  console.log(events)
+  // console.log(events)
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: < Home events ={events}/>
+      element: < Home events ={events} setEvents = {setEvents}/>
     },
     {
       path: "bookmark",
-      element: < Bookmark events ={events}/>
+      element: < Bookmark events ={events} setEvents = {setEvents}/>
     },
     {
       path: "event",

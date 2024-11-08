@@ -2,8 +2,7 @@ import Header from "../components/Header"
 import Card from "../components/Card";
 import Footer from "../components/Footer";
 
-const Home = ({events}) => {
-    console.log(events)
+const Home = ({events,setEvents}) => {
     return ( 
         <>
         < Header />
@@ -13,14 +12,16 @@ const Home = ({events}) => {
 
                 {events.map((event,index) => (
                     < Card 
+                    setEvents = {setEvents}
                     key={index}
-                    id={index}
+                    id={event.eventId}
                     title={event.title} 
                     date = {event.date}
                     location = {event.location}
                     category = {event.category}
                     description = {event.description} 
                     image={event.image}
+                    bookmarked={event.bookmarked}
                     />
                 ))}
 
