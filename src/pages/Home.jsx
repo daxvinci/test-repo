@@ -1,13 +1,14 @@
 import Header from "../components/Header"
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 
 const Home = ({events}) => {
     console.log(events)
     return ( 
         <>
         < Header />
-        <div className="flex h-screen w-full">
-            <div className="hello container w-[50%]  mx-auto">
+        <div className="flex min-h-screen w-full">
+            <div className="hello container w-[55%]  mx-auto">
                 <h1 className="text-4xl mb-10">Eventinator</h1>     
 
                 {events.map((event,index) => (
@@ -23,9 +24,10 @@ const Home = ({events}) => {
                     />
                 ))}
 
-
+                
             </div>
         </div>
+        < Footer />
         </>
      );
 }
